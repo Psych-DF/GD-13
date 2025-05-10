@@ -11,11 +11,11 @@ function getRandomTileType() {
     { type: "shroom", weight: 5 },
     { type: "flame", weight: 1 },
     { type: "key", weight: 1 },
-    { type: "bone", weight: 5 },
+    { type: "bone", weight: 10 },
     { type: "skull", weight: 3 },
     { type: "crown", weight: 1 },
     { type: "bottle", weight: 3 },
-    { type: "soil", weight: 5 },
+    { type: "soil", weight: 10 },
     { type: "coin", weight: 1 },
     { type: "pebble", weight: 5 },
     { type: "note", weight: 3 },
@@ -24,7 +24,7 @@ function getRandomTileType() {
     { type: "spider", weight: 3 },
     { type: "worm", weight: 3 },
     { type: "bell", weight: 3 },
-    { type: "darkness", weight: 40 },
+    { type: "darkness", weight: 30 },
   ];
 
   const roll = Math.random() * 100;
