@@ -353,8 +353,6 @@ function loadGame(slotNumber) {
     // No save found → create fresh game state manually
     player = defaultPlayer();
     grid = [];   // ← just define empty array for now
-}
-}
     }
 
     document.getElementById("start-screen-overlay").classList.remove("active");
