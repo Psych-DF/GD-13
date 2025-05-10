@@ -350,10 +350,11 @@ function loadGame(slotNumber) {
         player = gameState.player;
         grid = gameState.grid;
     } else {
-        // No save found → create fresh game state manually
-        player = defaultPlayer();
-        };
-        grid = createNewGrid();   // ✅ this is still fine if you have it
+    // No save found → create fresh game state manually
+    player = defaultPlayer();
+    grid = [];   // ← just define empty array for now
+}
+}
     }
 
     document.getElementById("start-screen-overlay").classList.remove("active");
