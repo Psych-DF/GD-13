@@ -382,3 +382,5 @@ function saveGame(slotNumber) {
     localStorage.setItem(`gravedigger_save_${slotNumber}`, JSON.stringify(saveData));
     console.log(`Game saved to slot ${slotNumber}`);
 }
+// GLOBAL LOADGAME ACCESS TO BUTTONS //
+window.loadGame = loadGame;
