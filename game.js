@@ -40,37 +40,36 @@ function getRandomTileType() {
 // PLAYER STATE
 // ===========================
 
-const player = {
-  x: 150,
-  y: 150,
-  spawnX: 150,
-  spawnY: 150,
-  day: 1,
-  stepsLeft: 50,
-  maxSteps: 50,
-  digs: 0,
-  sword: 0,
-  cat: 0,
-  necklace: 0,
-  heart: 0,
-  shroom: 0,
-  flame: 0,
-  key: 0,
-  bone: 0,
-  skull: 0,
-  crown: 0,
-  bottle: 0,
-  soil: 0,
-  coin: 0,
-  pebble: 0,
-  note: 0,
-  eye: 0,
-  root: 0,
-  spider: 0,
-  worm: 0,
-  bell: 0,
-  inventory: [null, null, null, null]
-};
+function defaultPlayer() {
+    return {
+        x: 150,
+        y: 150,
+        inventory: [null, null, null, null],
+        stepsLeft: 50,
+        digs: 0,
+        sword: 0,
+        cat: 0,
+        necklace: 0,
+        heart: 0,
+        shroom: 0,
+        flame: 0,
+        key: 0,
+        bone: 0,
+        skull: 0,
+        crown: 0,
+        bottle: 0,
+        soil: 0,
+        coin: 0,
+        pebble: 0,
+        note: 0,
+        eye: 0,
+        root: 0,
+        spider: 0,
+        worm: 0,
+        bell: 0,
+        days: 1
+    };
+}
 
 function updateCounters() {
   document.getElementById("step-count").textContent = player.stepsLeft;
