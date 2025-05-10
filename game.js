@@ -345,29 +345,23 @@ window.addEventListener("DOMContentLoaded", () => {
 
 // ✅ LOAD GAME CLEANLY
 function loadGame(slotNumber) {
-    const saveData = localStorage.getItem(`gravedigger_save_slot_${slotNumber}`);
+    const saveData = localStorage.getItem(`gravedigger_save_${slotNumber}`);
     if (saveData) {
-        const state = JSON.parse(saveData);
-        player = state.player;
-        grid = state.grid;
+        const gameState = JSON.parse(saveData);
+        player = gameState.player;
+        grid = gameState.grid;
     } else {
-        // If no save exists, start new game
+        // No save, start fresh
         player = createNewPlayer();
         grid = createNewGrid();
     }
-
     document.getElementById("start-screen-overlay").classList.remove("active");
-
-    updatePlayerPosition();
-    centerCameraOnPlayer();
-    updateStepDisplay();
-    updateCounters();
-    updateInventoryUI();
+    initGame();
 }
 
 /* SAVES */
 
-function saveGame(slot) {
+function saveGame(slotNumber) {
     // Save grid state
     const gridData = [];
     document.querySelectorAll('.tile').forEach(tile => {
@@ -385,16 +379,16 @@ function saveGame(slot) {
         grid: gridData
     };
 
-    localStorage.setItem(`gravedigger_save_${slot}`, JSON.stringify(saveData));
-    console.log(`Game saved to slot ${slot}`);
+    localStorage.setItem(`gravedigger_save_${slotNumber}`, JSON.stringify(saveData));
+    console.log(`Game saved to slot ${slotNumber}`);
 }
 
 /*LOADS*/
 
-function loadGame(slot) {
-    const data = localStorage.getItem(`gravedigger_save_${slot}`);
+function loadGame(slotNumber) {
+    const data = localStorage.getItem(`gravedigger_save_${slotNumber}`);
     if (!data) {
-        console.warn(`No save data found for slot ${slot}`);
+        console.warn(`No save data found for slot ${slotNumber}`);
         return;
     }
 
@@ -420,5 +414,5 @@ function loadGame(slot) {
     updateCounters();
     updateInventoryUI();
     centerCameraOnPlayer();
-    console.log(`Game loaded from slot ${slot}`);
+    console.log(`Game loaded from slot ${slotNumber}`);
 }
