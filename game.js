@@ -337,13 +337,13 @@ window.startNewDay = function () {
   updateCounters();
 };
 
-// Start game //
+// START GAME //
 // ✅ ONLY DOM READY
 window.addEventListener("DOMContentLoaded", () => {
     // No auto-start, wait for user to click a save slot
 });
 
-// ✅ LOAD GAME CLEANLY
+// LOAD GAME CLEANLY //
 function loadGame(slotNumber) {
     const saveData = localStorage.getItem(`gravedigger_save_${slotNumber}`);
     if (saveData) {
@@ -359,7 +359,7 @@ function loadGame(slotNumber) {
     initGame();
 }
 
-/* SAVES */
+// SAVE GAME //
 
 function saveGame(slotNumber) {
     // Save grid state
@@ -381,38 +381,4 @@ function saveGame(slotNumber) {
 
     localStorage.setItem(`gravedigger_save_${slotNumber}`, JSON.stringify(saveData));
     console.log(`Game saved to slot ${slotNumber}`);
-}
-
-/*LOADS*/
-
-function loadGame(slotNumber) {
-    const data = localStorage.getItem(`gravedigger_save_${slotNumber}`);
-    if (!data) {
-        console.warn(`No save data found for slot ${slotNumber}`);
-        return;
-    }
-
-    const saveData = JSON.parse(data);
-
-    // Restore player
-    Object.assign(player, saveData.player);
-
-    // Clear + rebuild grid
-    const gameContainer = document.getElementById("game");
-    gameContainer.innerHTML = "";
-
-    saveData.grid.forEach(tileData => {
-        const tile = document.createElement("div");
-        tile.classList.add(...tileData.classes);
-        tile.dataset.x = tileData.x;
-        tile.dataset.y = tileData.y;
-        tile.dataset.type = tileData.type;
-        gameContainer.appendChild(tile);
-    });
-
-    updatePlayerPosition();
-    updateCounters();
-    updateInventoryUI();
-    centerCameraOnPlayer();
-    console.log(`Game loaded from slot ${slotNumber}`);
 }
