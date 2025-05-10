@@ -425,3 +425,26 @@ background-color: lime;
   height: 100%;
   object-fit: contain;
 }
+
+/* SAVE BUTTONS */
+
+/* ========================== */
+/* START SCREEN SAVE BUTTONS  */
+/* ========================== */
+
+#start-screen button {
+  background-color: black;
+  color: limegreen;
+  font-family: monospace;
+  border: 2px solid limegreen;
+  padding: 8px 16px;
+  margin: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+#start-screen button:hover {
+  background-color: limegreen;
+  color: black;
+}
