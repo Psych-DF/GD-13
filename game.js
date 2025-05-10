@@ -95,6 +95,7 @@ function updateCounters() {
   document.getElementById("spider-count").textContent = player.spider;
   document.getElementById("worm-count").textContent = player.worm;
   document.getElementById("bell-count").textContent = player.bell;
+  document.getElementById("day-count").textContent = player.day;
 }
 
 // ===========================
@@ -172,7 +173,8 @@ function initGame() {
   createGrid(gameContainer);
 
   updatePlayerPosition();          // ✅ add this
-  centerCameraOnPlayer();  
+  centerCameraOnPlayer();
+  updateCounters();
 
   document.addEventListener("keydown", handleKeyDown);
   document.addEventListener("keyup", handleKeyUp);
