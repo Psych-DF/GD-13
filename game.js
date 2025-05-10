@@ -337,20 +337,33 @@ window.startNewDay = function () {
   updateCounters();
 };
 
-// Start game and allow music trigger
+// Start game //
+// ✅ ONLY DOM READY
 window.addEventListener("DOMContentLoaded", () => {
-  initGame();
+    // No auto-start, wait for user to click a save slot
 });
 
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") {
-    const startOverlay = document.getElementById("start-screen-overlay");
-    if (startOverlay && startOverlay.classList.contains("active")) {
-      startOverlay.classList.remove("active");
-      if (typeof startMusic === "function") startMusic();
+// ✅ LOAD GAME CLEANLY
+function loadGame(slotNumber) {
+    const saveData = localStorage.getItem(`gravedigger_save_slot_${slotNumber}`);
+    if (saveData) {
+        const state = JSON.parse(saveData);
+        player = state.player;
+        grid = state.grid;
+    } else {
+        // If no save exists, start new game
+        player = createNewPlayer();
+        grid = createNewGrid();
     }
-  }
-});
+
+    document.getElementById("start-screen-overlay").classList.remove("active");
+
+    updatePlayerPosition();
+    centerCameraOnPlayer();
+    updateStepDisplay();
+    updateCounters();
+    updateInventoryUI();
+}
 
 /* SAVES */
 
