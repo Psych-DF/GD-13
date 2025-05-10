@@ -45,6 +45,7 @@ const player = {
   y: 150,
   spawnX: 150,
   spawnY: 150,
+  day: 1,
   stepsLeft: 50,
   maxSteps: 50,
   digs: 0,
@@ -326,9 +327,12 @@ window.startNewDay = function () {
   player.x = player.spawnX;
   player.y = player.spawnY;
 
+  player.day += 1;
+
   updatePlayerPosition();
   centerCameraOnPlayer();
   updateStepDisplay();
+  updateCounters();
 };
 
 // Start game and allow music trigger
