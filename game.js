@@ -351,10 +351,38 @@ function loadGame(slotNumber) {
         player = gameState.player;
         grid = gameState.grid;
     } else {
-        // No save, start fresh
-        player = createNewPlayer();
-        grid = createNewGrid();
+        // No save found → create fresh game state manually
+        player = {
+            x: 0,
+            y: 0,
+            inventory: [null, null, null, null],
+            stepsLeft: 50,
+            digs: 0,
+            sword: 0,
+            cat: 0,
+            necklace: 0,
+            heart: 0,
+            shroom: 0,
+            flame: 0,
+            key: 0,
+            bone: 0,
+            skull: 0,
+            crown: 0,
+            bottle: 0,
+            soil: 0,
+            coin: 0,
+            pebble: 0,
+            note: 0,
+            eye: 0,
+            root: 0,
+            spider: 0,
+            worm: 0,
+            bell: 0,
+            days: 1
+        };
+        grid = createNewGrid();   // ✅ this is still fine if you have it
     }
+
     document.getElementById("start-screen-overlay").classList.remove("active");
     initGame();
 }
