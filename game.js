@@ -67,7 +67,7 @@ function defaultPlayer() {
         spider: 0,
         worm: 0,
         bell: 0,
-        days: 1
+        day: 1
     };
 }
 
